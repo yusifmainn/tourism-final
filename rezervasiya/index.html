@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tur Rezervasiyası — Aze-Tourism</title>
+  <meta name="description" content="Qarabağ teambuilding turu üçün onlayn rezervasiya — məlumat, sənəd və 10 ₼ depozit." />
+  <meta name="theme-color" content="#0a2720" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#bookingForm">Formaya keç</a>
+
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__meta">
+        <a href="tel:+994123000053"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+994 12 300 00 53</a>
+        <a href="mailto:info@aze-tourism.az"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 7-10 6L2 7"/></svg>info@aze-tourism.az</a>
+      </div>
+      <div class="utility__right">
+        <span style="color:rgba(255,255,255,.55)" data-i18n="util.secure">Təhlükəsiz ödəniş · SSL</span>
+        <div class="lang" role="group" aria-label="Dil">
+          <button class="lang__btn is-active" type="button" data-lang="az" aria-pressed="true">AZ</button>
+          <button class="lang__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <button class="lang__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="../" class="brand">
+        <img class="brand__logo" src="../assets/img/logo.png" alt="Aze-Tourism" width="1242" height="240" />
+      </a>
+      <nav class="nav" aria-label="Əsas menyu">
+        <a href="../#tur" data-i18n="nav.about">Tur haqqında</a>
+        <a href="../#proqram" data-i18n="nav.program">Proqram</a>
+        <a href="../#qiymet" data-i18n="nav.price">Qiymət</a>
+        <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="header__actions">
+        <a href="../" class="btn btn--outline btn--sm" data-i18n="btn.home">Ana səhifə</a>
+        <button class="nav-toggle" type="button" aria-label="Menyu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mnav">
+      <a href="../#tur" data-i18n="nav.about">Tur haqqında</a>
+      <a href="../#proqram" data-i18n="nav.program">Proqram</a>
+      <a href="../#qiymet" data-i18n="nav.price">Qiymət</a>
+      <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../" class="btn btn--outline" data-i18n="btn.home">Ana səhifə</a>
+    </div>
+  </header>
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="container crumb__inner">
+      <a href="../" data-i18n="btn.home">Ana səhifə</a><span>/</span><strong data-i18n="crumb.reserve">Rezervasiya</strong>
+    </div>
+  </nav>
+
+  <section class="pagelead">
+    <div class="container">
+      <p class="pagelead__label" data-i18n="lead.label">Onlayn qeydiyyat</p>
+      <h1 data-i18n="lead.title">Qarabağ Teambuilding — Rezervasiya</h1>
+      <p data-i18n="lead.sub">3 addımda tamamlayın: şəxsi məlumatlar, sənəd və ödəniş.</p>
+    </div>
+  </section>
+
+  <div class="booking-wrap">
+    <div class="container booking">
+      <div class="panelcard">
+        <ol class="steps" aria-label="Qeydiyyat addımları">
+          <li class="step is-active" data-step="1"><span class="step__num">1</span><span class="step__label" data-i18n="step1">Məlumatlar</span></li>
+          <li class="step" data-step="2"><span class="step__num">2</span><span class="step__label" data-i18n="step2">Sənəd & Şərtlər</span></li>
+          <li class="step" data-step="3"><span class="step__num">3</span><span class="step__label" data-i18n="step3">Ödəniş</span></li>
+        </ol>
+
+        <form id="bookingForm" novalidate>
+          <!-- STEP 1 -->
+          <fieldset class="panel is-active" data-panel="1">
+            <legend class="panel__title" data-i18n="p1.title">Şəxsi məlumatlar</legend>
+            <p class="panel__hint" data-i18n="p1.hint">Məlumatlar giriş icazəsi və rezervasiya sənədləri üçün rəsmi qaydada istifadə olunur.</p>
+            <div class="grid-2">
+              <div class="field"><label for="ad"><span data-i18n="f.ad">Ad</span> <span class="req">*</span></label><input id="ad" name="ad" type="text" autocomplete="given-name" /><small class="error" data-for="ad"></small></div>
+              <div class="field"><label for="soyad"><span data-i18n="f.soyad">Soyad</span> <span class="req">*</span></label><input id="soyad" name="soyad" type="text" autocomplete="family-name" /><small class="error" data-for="soyad"></small></div>
+              <div class="field"><label for="ata" data-i18n="f.ata">Ata adı</label><input id="ata" name="ata" type="text" /></div>
+              <div class="field"><label for="fin"><span data-i18n="f.fin">Şəxsiyyət vəsiqəsi FİN</span> <span class="req">*</span></label><input id="fin" name="fin" type="text" maxlength="7" data-i18n-ph="f.finPh" placeholder="7 simvol" style="text-transform:uppercase" /><small class="error" data-for="fin"></small></div>
+              <div class="field"><label for="email"><span data-i18n="f.email">E-poçt</span> <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="ad@sirket.az" /><small class="error" data-for="email"></small></div>
+              <div class="field">
+                <label for="tel"><span data-i18n="f.tel">Telefon</span> <span class="req">*</span></label>
+                <div class="phone">
+                  <select id="telCode" class="phone__code" aria-label="Ölkə / country code"></select>
+                  <input id="tel" name="tel" type="tel" inputmode="numeric" class="phone__num" autocomplete="tel" />
+                </div>
+                <small class="error" data-for="tel"></small>
+              </div>
+            </div>
+            <div class="field field--full">
+              <label><span data-i18n="f.date">Tur tarixi</span> <span class="req">*</span> <span class="hint" data-i18n="f.dateHint">(başlanğıc günü seçin — 2 gün 1 gecə)</span></label>
+              <div class="calendar" id="calendar" role="application" aria-label="Tur tarixi">
+                <div class="calendar__head">
+                  <button type="button" class="calendar__nav" id="calPrev" aria-label="Əvvəlki ay">‹</button>
+                  <strong id="calTitle" aria-live="polite"></strong>
+                  <button type="button" class="calendar__nav" id="calNext" aria-label="Növbəti ay">›</button>
+                </div>
+                <div class="calendar__dow" id="calDow" aria-hidden="true"></div>
+                <div class="calendar__grid" id="calGrid"></div>
+              </div>
+              <p class="daterange" id="dateRange" data-i18n="date.none">Tarix seçilməyib</p>
+              <small class="error" data-for="tarix"></small>
+            </div>
+            <div class="panel__actions"><span></span><button type="button" class="btn btn--primary" data-next="2" data-i18n="btn.continue">Davam et</button></div>
+          </fieldset>
+
+          <!-- STEP 2 -->
+          <fieldset class="panel" data-panel="2">
+            <legend class="panel__title" data-i18n="p2.title">Sənəd və şərtlər</legend>
+            <p class="panel__hint" data-i18n="p2.hint">Qarabağa giriş rəsmi icazə tələb edir.</p>
+            <div class="notice notice--info">
+              <svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              <p data-i18n-html="notice.doc">Şəxsiyyət vəsiqənizin şəkli yalnız giriş icazəsi müraciəti üçün istifadə olunur.</p>
+            </div>
+            <div class="field">
+              <label for="idfile"><span data-i18n="f.idfile">Şəxsiyyət vəsiqəsinin şəkli</span> <span class="req">*</span></label>
+              <div class="upload" id="uploadBox" tabindex="0" role="button" aria-label="Şəkil yüklə">
+                <input id="idfile" name="idfile" type="file" accept="image/*" hidden />
+                <div class="upload__empty" id="uploadEmpty">
+                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                  <p><strong data-i18n="upload.strong">Şəkil yükləyin</strong> <span data-i18n="upload.or">və ya buraya sürüşdürün</span></p>
+                  <small data-i18n="upload.types">JPG, PNG, WebP · maks. 8 MB</small>
+                </div>
+                <div class="upload__preview" id="uploadPreview" hidden>
+                  <img id="previewImg" alt="Önizləmə" />
+                  <div class="upload__meta"><span id="fileName"></span><button type="button" class="link-btn" id="removeFile" data-i18n="upload.remove">Sil</button></div>
+                </div>
+              </div>
+              <small class="error" data-for="idfile"></small>
+            </div>
+            <div class="field field--check">
+              <label class="checkbox">
+                <input type="checkbox" id="terms" name="terms" />
+                <span></span>
+                <span class="checkbox__text"><a href="../sertler/" target="_blank" rel="noopener" class="link-btn" data-i18n="terms.link">İştirak şərtləri və məxfilik siyasəti</a> <span data-i18n="terms.agree">ilə razıyam.</span></span>
+              </label>
+              <small class="error" data-for="terms"></small>
+            </div>
+            <div class="panel__actions"><button type="button" class="btn btn--outline" data-prev="1" data-i18n="btn.back">Geri</button><button type="button" class="btn btn--primary" data-next="3" data-i18n="btn.toPay">Ödənişə keç</button></div>
+          </fieldset>
+
+          <!-- STEP 3 -->
+          <fieldset class="panel" data-panel="3">
+            <legend class="panel__title" data-i18n="p3.title">Ödəniş məlumatları</legend>
+            <p class="panel__hint" data-i18n="p3.hint">Rəsmi qaimə üçün hesab (billing) məlumatlarını daxil edin.</p>
+            <div class="grid-2">
+              <div class="field field--full"><label for="unvan"><span data-i18n="f.unvan">Yaşayış ünvanı</span> <span class="req">*</span></label><input id="unvan" type="text" autocomplete="street-address" data-i18n-ph="f.unvanPh" placeholder="Küçə, bina, mənzil" /><small class="error" data-for="unvan"></small></div>
+              <div class="field"><label for="seher"><span data-i18n="f.seher">Şəhər</span> <span class="req">*</span></label><input id="seher" type="text" autocomplete="address-level2" value="Bakı" /><small class="error" data-for="seher"></small></div>
+              <div class="field"><label for="postal" data-i18n="f.postal">Poçt indeksi</label><input id="postal" type="text" inputmode="numeric" placeholder="AZ 0000" /></div>
+            </div>
+
+            <!-- Card fields: shown only while Kapital Bank is not connected (GET /api/config onlinePayment:false).
+                 Only the last 4 digits and the expiry are sent (admin-only); the full number and CVV never are. -->
+            <div class="grid-2 cardfields" id="cardFields">
+              <div class="field field--full"><label for="cardName"><span data-i18n="f.cardName">Kart sahibi</span> <span class="req">*</span></label><input id="cardName" type="text" data-i18n-ph="f.cardNamePh" placeholder="AD SOYAD" autocomplete="off" /><small class="error" data-for="cardName"></small></div>
+              <div class="field field--full"><label for="cardNo"><span data-i18n="f.cardNo">Kart nömrəsi</span> <span class="req">*</span></label><input id="cardNo" type="text" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="off" /><small class="error" data-for="cardNo"></small></div>
+              <div class="field"><label for="cardExp"><span data-i18n="f.cardExp">Bitmə tarixi</span> <span class="req">*</span></label><input id="cardExp" type="text" inputmode="numeric" data-i18n-ph="f.cardExpPh" placeholder="AA/İL" maxlength="5" autocomplete="off" /><small class="error" data-for="cardExp"></small></div>
+              <div class="field"><label for="cardCvv"><span data-i18n="f.cardCvv">CVV</span> <span class="req">*</span></label><input id="cardCvv" type="text" inputmode="numeric" placeholder="•••" maxlength="4" autocomplete="off" /><small class="error" data-for="cardCvv"></small></div>
+            </div>
+
+            <!-- Deposit amount; with Kapital Bank connected the card is entered on the bank's page -->
+            <div class="deposit">
+              <div class="deposit__row">
+                <span class="deposit__label" data-i18n="deposit.title">Rezervasiya depoziti</span>
+                <b class="deposit__amount" data-deposit>10 ₼</b>
+              </div>
+              <p class="deposit__note" id="depOnline"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-i18n="deposit.online">Ödəniş Kapital Bank-ın təhlükəsiz ödəniş səhifəsində aparılır. Kart məlumatlarınız saytımızda saxlanılmır.</span></p>
+              <p class="deposit__note" id="depOffline" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-i18n="deposit.offline">Tam kart nömrəniz və CVV kodunuz saytımızda saxlanılmır.</span></p>
+            </div>
+            <p class="error" id="payError" role="alert"></p>
+            <div class="panel__actions"><button type="button" class="btn btn--outline" data-prev="2" data-i18n="btn.back">Geri</button><button type="submit" class="btn btn--gold" id="payBtn"><span class="btn__label">10 ₼ depozit ödə</span><span class="btn__spinner" hidden></span></button></div>
+          </fieldset>
+        </form>
+
+        <!-- Result: booking saved / returning from the bank (filled by rezervasiya.js) -->
+        <div class="success" id="result" hidden>
+          <div class="success__check" id="resIcon" aria-hidden="true"></div>
+          <h2 id="resTitle" tabindex="-1"></h2>
+          <p class="success__ref" id="refNo" hidden></p>
+          <p class="success__sub" id="resSub"></p>
+          <p class="error success__err" id="resError" role="alert"></p>
+          <div class="success__actions">
+            <button type="button" class="btn btn--gold" id="resPay" hidden><span class="btn__label" data-i18n="pay.retry">Yenidən ödə</span><span class="btn__spinner" hidden></span></button>
+            <button type="button" class="btn btn--outline" id="resCheck" data-i18n="btn.recheck" hidden>Yenidən yoxla</button>
+            <a href="./" class="btn btn--outline" id="resRestart" data-i18n="btn.restart" hidden>Yenidən başla</a>
+            <a href="../" class="btn btn--outline" data-i18n="success.back">Ana səhifəyə qayıt</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="ordercard" aria-label="Sifariş xülasəsi">
+        <div class="ordercard__head" data-i18n="order.title">Sifariş xülasəsi</div>
+        <div class="ordercard__body">
+          <div class="ordercard__row"><span data-i18n="order.tour">Tur</span><b data-i18n="order.tourV">Qarabağ Teambuilding</b></div>
+          <div class="ordercard__row"><span data-i18n="order.dur">Müddət</span><b data-i18n="card.durV">2 gün / 1 gecə</b></div>
+          <div class="ordercard__row"><span data-i18n="order.date">Tarix</span><b id="sumDate">—</b></div>
+          <div class="ordercard__total"><span data-i18n="order.deposit">Depozit</span><b data-deposit>10 ₼</b></div>
+        </div>
+        <div class="ordercard__meta">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span data-i18n="order.meta">Giriş icazəsi dəstəyi və sığorta qiymətə daxildir.</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer__bottom footer__bottom--compact">
+      <p data-i18n="footer.rights">© 2026 Aze-Tourism. Bütün hüquqlar qorunur.</p>
+      <p class="footer__legalline">Aze-Tourism · <span class="nowrap"><span data-i18n="legal.voen">VÖEN:</span> 1409214732</span> · <span class="nowrap"><span data-i18n="legal.license">Lisenziya №:</span> 14-2964</span> · <span data-i18n="legal.addr">Bakı şəhəri, Mehdi Hüseyn küç., 58</span> · <a class="nowrap" href="tel:+994123000053">+994 12 300 00 53</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/rezervasiya.js" defer></script>
+  <script src="../assets/js/visit.js" defer></script>
+</body>
+</html>

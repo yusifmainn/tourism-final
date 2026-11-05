@@ -1,0 +1,11 @@
+# Secrets must never be committed
+.env
+
+# Build output
+/aze-tourism
+*.exe
+
+.claude/
+
+# Company TLS certificate and private key (DEPLOY.md 2.6)
+certs/

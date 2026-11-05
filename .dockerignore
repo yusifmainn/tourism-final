@@ -1,0 +1,12 @@
+.git
+.claude
+.env
+*.exe
+deploy
+Dockerfile
+docker-compose.yml
+Caddyfile
+README.md
+DEPLOY.md
+start.bat
+certs

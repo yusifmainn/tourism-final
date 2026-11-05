@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Aze-Tourism</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0a2720" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <!-- LOGIN -->
+  <div class="admin-bg" id="loginView">
+    <form class="login" id="loginForm" novalidate>
+      <div class="login__brand">
+        <img class="login__logo" src="../assets/img/logo.png" alt="Aze-Tourism" width="1242" height="240" />
+      </div>
+      <h1>Admin Panel</h1>
+      <p>Aze-Tourism idarəetmə paneli</p>
+      <div class="login__err" id="loginErr" role="alert" hidden>İstifadəçi adı və ya parol yanlışdır.</div>
+      <div class="field"><label for="user">İstifadəçi adı</label><input id="user" type="text" autocomplete="username" autofocus /></div>
+      <div class="field"><label for="pass">Parol</label><input id="pass" type="password" autocomplete="current-password" /></div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Daxil ol</button>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-shell" id="dashView" hidden>
+    <div class="admin-top">
+      <div class="container admin-top__inner">
+        <span class="admin-top__brand">
+          <span class="brand brand--plate"><img class="brand__logo" src="../assets/img/logo.png" alt="Aze-Tourism" width="1242" height="240" /></span>
+          <small class="admin-top__label">Admin panel</small>
+          <span class="role-badge" id="roleBadge"></span>
+        </span>
+        <button class="btn btn--ghost-light btn--sm" type="button" id="logout">Çıxış</button>
+      </div>
+    </div>
+
+    <main class="admin-main">
+      <div class="container">
+        <nav class="admin-tabs" id="tabs">
+          <button class="admin-tab is-active" type="button" data-tab="bookings">Rezervasiyalar</button>
+          <button class="admin-tab" type="button" data-tab="faq" data-op>FAQ idarəsi</button>
+          <button class="admin-tab" type="button" data-tab="terms" data-op>Şərtlər</button>
+          <button class="admin-tab" type="button" data-tab="stats" data-op>Statistika</button>
+          <button class="admin-tab" type="button" data-tab="visits" data-admin hidden>Giriş loqları</button>
+        </nav>
+
+        <!-- BOOKINGS -->
+        <section class="admin-pane is-active" data-pane="bookings">
+          <div class="admin-head">
+            <div><h1>Rezervasiyalar</h1><p>Saytdan daxil olan tur qeydiyyatları</p></div>
+            <button class="btn btn--outline btn--sm" type="button" id="refresh">Yenilə</button>
+          </div>
+          <div class="stats" id="bookingStats">
+            <div class="stat"><b id="stTotal">0</b><span>Ümumi qeydiyyat</span></div>
+            <div class="stat"><b id="stMonth">0</b><span>Bu ay</span></div>
+            <div class="stat"><b id="stNew">0</b><span>Yeni (emal gözləyir)</span></div>
+            <div class="stat" id="stSumTile" hidden><b id="stSum">0 ₼</b><span>Ödənilmiş depozit</span></div>
+          </div>
+          <div class="tablewrap">
+            <div class="tablewrap__head"><h2>Qeydiyyat siyahısı</h2><span class="badge" id="countBadge">0 qeyd</span></div>
+            <div class="tablescroll">
+              <table class="data" id="dataTable">
+                <thead><tr><th>Referans</th><th>İştirakçı</th><th>Tur tarixi</th><th>Status</th><th data-paycol hidden>Depozit</th><th>Qeydiyyat</th><th><span class="sr-only">Detal</span></th></tr></thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="emptyState" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+              <p>Hələ qeydiyyat yoxdur.<br/>Saytdan daxil olan rezervasiyalar burada görünəcək.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="admin-pane" data-pane="faq">
+          <div class="admin-head">
+            <div><h1>FAQ idarəsi</h1><p>Saytdakı tez-tez soruşulan sualları əlavə edin, redaktə edin və ya silin (3 dil).</p></div>
+            <button class="btn btn--primary btn--sm" id="faqAdd">+ Yeni sual</button>
+          </div>
+          <div id="faqAdminList"></div>
+
+          <div class="editor" id="faqEditor" hidden>
+            <h3 id="faqEditorTitle">Sual əlavə et</h3>
+            <div class="lang-tabs" id="faqLangTabs">
+              <button type="button" class="lang-tab is-active" data-elang="az">AZ</button>
+              <button type="button" class="lang-tab" data-elang="ru">RU</button>
+              <button type="button" class="lang-tab" data-elang="en">EN</button>
+            </div>
+            <div class="lang-fields is-active" data-elang="az">
+              <div class="efield"><label>Sual (AZ)</label><input type="text" id="fq_az" /></div>
+              <div class="efield"><label>Cavab (AZ)</label><textarea id="fa_az"></textarea></div>
+            </div>
+            <div class="lang-fields" data-elang="ru">
+              <div class="efield"><label>Вопрос (RU)</label><input type="text" id="fq_ru" /></div>
+              <div class="efield"><label>Ответ (RU)</label><textarea id="fa_ru"></textarea></div>
+            </div>
+            <div class="lang-fields" data-elang="en">
+              <div class="efield"><label>Question (EN)</label><input type="text" id="fq_en" /></div>
+              <div class="efield"><label>Answer (EN)</label><textarea id="fa_en"></textarea></div>
+            </div>
+            <div class="editor__foot">
+              <button class="btn btn--primary btn--sm" id="faqSave">Yadda saxla</button>
+              <button class="btn btn--outline btn--sm" id="faqCancel">Ləğv et</button>
+              <span class="saved-flash" id="faqSaved" hidden>Yadda saxlanıldı ✓</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- TERMS -->
+        <section class="admin-pane" data-pane="terms">
+          <div class="admin-head">
+            <div><h1>Şərtlər mətni</h1><p>İştirak şərtləri və məxfilik səhifəsinin mətni (3 dil).</p></div>
+          </div>
+          <div class="editor">
+            <div class="lang-tabs" id="termsLangTabs">
+              <button type="button" class="lang-tab is-active" data-tlang="az">AZ</button>
+              <button type="button" class="lang-tab" data-tlang="ru">RU</button>
+              <button type="button" class="lang-tab" data-tlang="en">EN</button>
+            </div>
+            <div class="lang-fields is-active" data-tlang="az"><textarea class="tall" id="tt_az"></textarea></div>
+            <div class="lang-fields" data-tlang="ru"><textarea class="tall" id="tt_ru"></textarea></div>
+            <div class="lang-fields" data-tlang="en"><textarea class="tall" id="tt_en"></textarea></div>
+            <div class="editor__foot">
+              <button class="btn btn--primary btn--sm" id="termsSave">Yadda saxla</button>
+              <span class="saved-flash" id="termsSaved" hidden>Yadda saxlanıldı ✓</span>
+            </div>
+            <p class="detail__note">İpucu: başlıq üçün sətrin əvvəlinə “## ” yazın. Boş sətir abzasları ayırır.</p>
+          </div>
+        </section>
+
+        <!-- STATİSTİKA (home page trust strip; admin and operator) -->
+        <section class="admin-pane" data-pane="stats">
+          <div class="admin-head">
+            <div><h1>Statistika</h1><p>Ana səhifədəki göstəricilər, məsələn “12+ illik təcrübə” (3 dil). Rəqəm xanasını boş qoysanız, həmin göstərici saytda görünmür.</p></div>
+          </div>
+          <div class="editor">
+            <div class="stat-edit stat-edit--head" aria-hidden="true"><span>Rəqəm</span><span>Mətn (AZ)</span><span>Текст (RU)</span><span>Text (EN)</span></div>
+            <div id="statsRows"></div>
+            <div class="editor__foot">
+              <button class="btn btn--primary btn--sm" type="button" id="statsSave">Yadda saxla</button>
+              <span class="saved-flash" id="statsSaved" hidden>Yadda saxlanıldı ✓</span>
+            </div>
+            <p class="detail__note">Yalnız təsdiqlənmiş, real rəqəmlər yazın: bu göstəricilər müştərilərə şirkətin rəsmi məlumatı kimi təqdim olunur.</p>
+          </div>
+        </section>
+
+        <!-- GİRİŞ LOQLARI (admin role only; the server enforces it too) -->
+        <section class="admin-pane" data-pane="visits">
+          <div class="admin-head">
+            <div><h1>Giriş loqları</h1><p>Sayta daxil olmalar və admin girişləri: IP ünvanı, provayder və cihaz məlumatı. Qeydlər 180 gün saxlanılır.</p></div>
+            <button class="btn btn--outline btn--sm" type="button" id="vRefresh">Yenilə</button>
+          </div>
+          <div class="stats">
+            <div class="stat"><b id="vToday">0</b><span>Bu gün giriş</span></div>
+            <div class="stat"><b id="vUnique">0</b><span>Bu gün unikal IP</span></div>
+            <div class="stat"><b id="vWeek">0</b><span>Son 7 gün</span></div>
+            <div class="stat" id="vFailedTile"><b id="vFailed">0</b><span>Uğursuz admin girişi · 24 saat</span></div>
+          </div>
+          <div class="tablewrap">
+            <div class="tablewrap__head">
+              <h2>Loq siyahısı</h2>
+              <form class="logs__filters" id="vFilters" role="search" novalidate>
+                <label class="sr-only" for="vSearch">Axtarış</label>
+                <input type="search" id="vSearch" maxlength="100" placeholder="IP, provayder, cihaz, səhifə…" autocomplete="off" />
+                <label class="sr-only" for="vKind">Növ</label>
+                <select id="vKind">
+                  <option value="all">Hamısı</option>
+                  <option value="visit">Sayt girişi</option>
+                  <option value="login_ok">Admin girişi — uğurlu</option>
+                  <option value="login_fail">Admin girişi — uğursuz</option>
+                </select>
+                <button type="submit" class="btn btn--primary btn--sm">Axtar</button>
+              </form>
+              <span class="badge" id="vCount">0 qeyd</span>
+            </div>
+            <div class="tablescroll">
+              <table class="data logs" id="vTable">
+                <thead><tr><th>Vaxt</th><th>Növ</th><th>IP</th><th>Provayder</th><th>Cihaz</th><th>ƏS · Brauzer</th><th>Səhifə</th><th><span class="sr-only">Detal</span></th></tr></thead>
+                <tbody id="vBody"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="vEmpty" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+              <p>Bu filtrə uyğun loq yoxdur.</p>
+            </div>
+            <div class="pager" id="vPager">
+              <button type="button" class="btn btn--outline btn--sm" id="vPrev">‹ Əvvəlki</button>
+              <span id="vPageInfo" aria-live="polite">Səhifə 1 / 1</span>
+              <button type="button" class="btn btn--outline btn--sm" id="vNext">Növbəti ›</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- DETAIL MODAL (all roles: payment section for admin/finance, ID document for admin/operator) -->
+  <div class="modal" id="detailModal" hidden>
+    <div class="modal__overlay" data-dclose></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal__head"><h3 id="detailTitle">Qeydiyyat detalı</h3><button type="button" class="modal__close" data-dclose aria-label="Bağla">×</button></div>
+      <div class="modal__body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- LOG DETAIL MODAL (admin only) -->
+  <div class="modal" id="logModal" hidden>
+    <div class="modal__overlay" data-lclose></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="logTitle">
+      <div class="modal__head"><h3 id="logTitle">Loq detalı</h3><button type="button" class="modal__close" data-lclose aria-label="Bağla">×</button></div>
+      <div class="modal__body" id="logBody"></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/admin.js" defer></script>
+  <script src="../assets/js/visit.js" defer></script>
+</body>
+</html>

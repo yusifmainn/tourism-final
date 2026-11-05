@@ -1,0 +1,57 @@
+# Fixed project name: the volumes (database!) must not depend on the folder name.
+name: aze-tourism
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aze_user
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?.env faylinda POSTGRES_PASSWORD yazin}"
+      POSTGRES_DB: aze_tourism
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aze_user -d aze_tourism"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "postgres://aze_user:${POSTGRES_PASSWORD}@db:5432/aze_tourism?sslmode=disable"
+      TRUST_PROXY: "true"
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-}"
+      FINANCE_PASSWORD: "${FINANCE_PASSWORD:?.env faylinda FINANCE_PASSWORD yazin}"
+      OPERATOR_PASSWORD: "${OPERATOR_PASSWORD:?.env faylinda OPERATOR_PASSWORD yazin}"
+      # Online deposit payment (see .env.example). PUBLIC_URL defaults to https://DOMAIN.
+      DOMAIN: "${DOMAIN:-}"
+      PUBLIC_URL: "${PUBLIC_URL:-}"
+      KAPITAL_API_URL: "${KAPITAL_API_URL:-}"
+      KAPITAL_USERNAME: "${KAPITAL_USERNAME:-}"
+      KAPITAL_PASSWORD: "${KAPITAL_PASSWORD:-}"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: "${DOMAIN:?.env faylinda DOMAIN yazin}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  db_data:
+  caddy_data:
+  caddy_config:
